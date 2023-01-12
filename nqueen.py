@@ -33,7 +33,7 @@ def next_possible_position(row_index, column_index, table_size: int) -> tuple:
     return row_index, column_index
 
 
-def place_queen(chess_board: list, row_index: int) -> list:
+def find_all_placements(chess_board: list, row_index: int) -> list:
     """
     Find all possible positions that a queen can be placed at and return them as a list of chess boards
 
@@ -77,7 +77,7 @@ def find_all_possible_placements(chess_board_size: int) -> list:
     while current_index < len(possible_tables):
         while current_index < len(possible_tables):
             current_table = possible_tables[current_index]
-            possible_queens = place_queen(current_table, first_empty_column_index(current_table))
+            possible_queens = find_all_placements(current_table, first_empty_column_index(current_table))
             possible_tables += possible_queens
             if first_empty_column_index(current_table) != -1:
                 possible_tables.remove(current_table)
