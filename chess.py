@@ -48,7 +48,7 @@ def queen_is_safe(queen_i: int, queen_j: int, table: list) -> tuple:
     try:
         i += 1
         j += 1
-        while i < n and j < n:
+        while i < len(table) and j < len(table):
             if table[i][j] == queen_icon:
                 # print('queen is not safe (ltr-ttb)')
                 # print(f'queen at ({i}, {j}) hits ({queen_i}, {queen_j}).')
@@ -80,7 +80,7 @@ def queen_is_safe(queen_i: int, queen_j: int, table: list) -> tuple:
     try:
         i += 1
         j -= 1
-        while i < n and j >= 0:
+        while i < len(table) and j >= 0:
             if table[i][j] == queen_icon:
                 # print('queen is not safe (rtl-ttb)')
                 # print(f'queen at ({i}, {j}) hits ({queen_i}, {queen_j}).')
@@ -96,7 +96,7 @@ def queen_is_safe(queen_i: int, queen_j: int, table: list) -> tuple:
     try:
         i -= 1
         j += 1
-        while i >= 0 and j < n:
+        while i >= 0 and j < len(table):
             if table[i][j] == queen_icon:
                 # print('queen is not safe (rtl-btt)')
                 # print(f'queen at ({i}, {j}) hits ({queen_i}, {queen_j}).')
