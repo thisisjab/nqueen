@@ -6,6 +6,10 @@ no_icon = 'O'
 
 
 def create_empty_table(size: int):
+    """
+    :param size: n
+    :return: a two-dimensional list like a chess board
+    """
     return [[no_icon] * size for _ in range(size)]
 
 
@@ -15,6 +19,14 @@ def print_table(table: list) -> None:
 
 
 def queen_is_safe(queen_i: int, queen_j: int, table: list) -> tuple:
+    """
+    check if it is safe to put a queen in a particular position in a way that is not being threatened
+
+    :param queen_i: queen's row number
+    :param queen_j: queen's column number
+    :param table: a 2d list consisting of chess table's row and columns
+    :return: True if queen is not threatened
+    """
     # First check if table[queen_i][queen_j] is actually a queen
     if table[queen_i][queen_j] != queen_icon:
         return True, -1, -1
@@ -110,6 +122,7 @@ def queen_is_safe(queen_i: int, queen_j: int, table: list) -> tuple:
 
 
 # Game
+# TODO: complete this part
 if __name__ == '__main__':
     print('Chess Queen Placement')
     print('Find all possible placements of n queens in an n*n chess table')
