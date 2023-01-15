@@ -1,12 +1,20 @@
 from utilities import *
 from copy import deepcopy
+from termcolor import colored
 
 
 # TODO: remove this function and use utilities.print_table function instead
 def tprint(chess_table: list) -> str:
     result = ''
     for current_row in chess_table:
-        result += ' '.join(current_row) + '\n'
+        for current_column in current_row:
+            if current_column == queen_icon:
+                result += colored(current_column, 'green')
+            else:
+                result += colored(current_column, 'red')
+
+            result += ' '
+        result += '\n'
 
     print(result[0:-1])
     return result[0:-1]
@@ -84,3 +92,15 @@ def find_all_possible_placements(chess_board_size: int) -> list:
             else:
                 current_index += 1
     return possible_tables
+
+
+from time import perf_counter, time
+for i in range(4, 15):
+    beginning_time = time()
+    pref_beginning_time = perf_counter()
+    answers = find_all_possible_placements(i)
+    pref_end_time = perf_counter()
+    print(f"For a {i}*{i} there are {len(answers)} answers")
+    end_time = time()
+    print(f"It took {end_time - beginning_time} seconds for python to calculate")
+    print(f"It took {pref_end_time - pref_beginning_time} seconds for the cpu")
