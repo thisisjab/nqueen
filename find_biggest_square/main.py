@@ -1,3 +1,6 @@
+from copy import deepcopy
+
+
 seed_matrix = [
     ['*', '#', '#', '*'],
     ['*', '*', '#', '*'],
@@ -34,5 +37,19 @@ def square_is_ok(square_matrix: list) -> bool:
 
 
 def gen_all_n_squares(matrix: list, size: int) -> list:
-    # TODO: complete this function
-    pass
+    matrix_copy = deepcopy(matrix)
+    result = []
+    for i in range(len(matrix) - size + 1):
+        for j in range(len(matrix) - size + 1):
+            result.append(create_square(matrix_copy, size, i, j))
+
+    return result
+
+
+# Simple test
+for size in range(len(seed_matrix), 1, -1):
+    generated_matrix = gen_all_n_squares(seed_matrix, size)
+    for square in generated_matrix:
+        if square_is_ok(square):
+            print(print_matrix(square))
+            break
